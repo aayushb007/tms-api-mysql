@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Task = require('../models/task');
 const User = require('../models/user');
+const { authenticateToken } = require('../auth/auth');
 // Create a new task
-router.post('/', async (req, res) => {
+router.post('/',authenticateToken, async (req, res) => {
     try {
         const { title, desc, user_id, due_date, status } = req.body;
     
@@ -29,7 +30,7 @@ router.post('/', async (req, res) => {
 });
 
 // Get all tasks
-router.get('/', async (req, res) => {
+router.get('/',authenticateToken,async (req, res) => {
   try {
     const tasks = await Task.findAll();
     res.json(tasks);
@@ -39,7 +40,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get a single task
-router.get('/:id', async (req, res) => {
+router.get('/:id',authenticateToken, async (req, res) => {
   try {
     const task = await Task.findByPk(req.params.id);
     if (task) {
@@ -53,7 +54,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Get a tasks of user
-router.get('/user/:id', async (req, res) => {
+router.get('/user/:id',authenticateToken, async (req, res) => {
     try {
       const task = await Task.findAll( {where : { user_id : req.params.id}});
       if (task) {
@@ -66,7 +67,7 @@ router.get('/user/:id', async (req, res) => {
     }
   });
 // Update a task
-router.put('/:id', async (req, res) => {
+router.put('/:id',authenticateToken, async (req, res) => {
   try {
     const task = await Task.findByPk(req.params.id);
     if (task) {
@@ -81,7 +82,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete a task
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',authenticateToken, async (req, res) => {
   try {
     const task = await Task.findByPk(req.params.id);
     if (task) {

@@ -21,5 +21,21 @@ const hashPassword = async (password) => {
 const comparePassword = async (password, hashedPassword) => {
   return bcrypt.compare(password, hashedPassword);
 };
+const authenticateToken = (req, res, next) => {
+  const token = req.headers.authorization;
 
-module.exports = { generateToken, verifyToken, hashPassword, comparePassword };
+  if (!token) {
+    return res.status(401).json({ error: 'No token provided' });
+  }
+
+  try {
+    const decodedToken = jwt.verify(token, 'my-key');
+    req.userId = decodedToken.id;
+
+    next();
+  } catch (err) {
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+};
+
+module.exports = { generateToken, verifyToken, hashPassword, comparePassword , authenticateToken};
