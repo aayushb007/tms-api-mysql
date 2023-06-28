@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const { generateToken, hashPassword, comparePassword } = require('../auth/auth');
+const { generateToken, hashPassword, comparePassword ,verifyToken } = require('../auth/auth');
 const jwt = require('jsonwebtoken');
 // Register a new user
 router.post('/register', async (req, res) => {
@@ -74,13 +74,6 @@ router.get('/profile', async (req, res) => {
   }
 });
 
-const verifyToken = (token, secretKey) => {
-  try {
-    return jwt.verify(token, secretKey);
-  } catch (error) {
-    return null;
-  }
-};
 
 
 // Get all users
