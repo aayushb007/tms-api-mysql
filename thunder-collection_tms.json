@@ -1,0 +1,146 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "tms",
+    "dateExported": "2023-07-04T15:12:23.318Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "ef70b74b-ae4f-4570-a450-9007549e450d",
+            "colId": "a5564af0-956d-4331-826a-56096637da37",
+            "containerId": "",
+            "name": "http://localhost:3000/tasks",
+            "url": "http://localhost:3000/tasks",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-07-04T15:09:32.168Z",
+            "modified": "2023-07-04T15:09:32.168Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"taskType\": \"Bug\",\n  \"title\": \"Bug 6\",\n  \"desc\": \"This is task 6\",\n  \"status\": \"Pending\",\n  \"startDate\": \"2023-07-04T00:00:00.000Z\",\n  \"dueDate\": \"2023-07-10T00:00:00.000Z\",\n  \"feature_id\":1\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "60211214-1be7-4810-b9af-c1e086ba76d1",
+            "colId": "a5564af0-956d-4331-826a-56096637da37",
+            "containerId": "",
+            "name": "get bugs task",
+            "url": "http://localhost:3000/tasks/bugs",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-07-04T15:10:17.971Z",
+            "modified": "2023-07-04T15:10:17.971Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "43b79a35-0f2d-4883-bb8e-1cdbe885c413",
+            "colId": "a5564af0-956d-4331-826a-56096637da37",
+            "containerId": "",
+            "name": "http://localhost:3000/features/user/1",
+            "url": "http://localhost:3000/features/user/1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-07-04T15:10:45.604Z",
+            "modified": "2023-07-04T15:10:45.604Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "69209a02-1942-4836-a0e1-dae435bae559",
+            "colId": "a5564af0-956d-4331-826a-56096637da37",
+            "containerId": "",
+            "name": "http://localhost:3000/tasks/user",
+            "url": "http://localhost:3000/tasks/user/1",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-07-04T15:11:01.774Z",
+            "modified": "2023-07-04T15:11:01.774Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5f121dc8-41f3-47ec-979a-3abce37c07ba",
+            "colId": "a5564af0-956d-4331-826a-56096637da37",
+            "containerId": "",
+            "name": "http://localhost:3000/sub-tasks",
+            "url": "http://localhost:3000/sub-tasks",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-07-04T15:11:15.885Z",
+            "modified": "2023-07-04T15:11:15.885Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"taskType\": \"Task\",\n  \"parentTaskId\": 4,\n  \"title\": \"Sub Task 1\",\n  \"desc\": \"This is a sub task\",\n  \"status\": \"Pending\",\n  \"assignedTo\": \"Jane Smith\",\n  \"startDate\": \"2023-07-05T00:00:00.000Z\",\n  \"dueDate\": \"2023-07-12T00:00:00.000Z\",\n  \"taskId\":4\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "fba94326-ee9e-47b7-a1a5-3e0667faff7a",
+            "colId": "a5564af0-956d-4331-826a-56096637da37",
+            "containerId": "",
+            "name": "http://localhost:3000/features",
+            "url": "http://localhost:3000/features",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2023-07-04T15:11:33.476Z",
+            "modified": "2023-07-04T15:11:33.476Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\":\"features6\",\n  \"description\":\"yo this feat\",\n  \"status\":\"Pending\",\n  \"startDate\":\"30/03/2022\",\n  \"dueDate\":\"22/04/2022\",\n  \"assignedUserId\": [1]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "218992d0-da42-47ba-a001-71c65e454107",
+            "colId": "a5564af0-956d-4331-826a-56096637da37",
+            "containerId": "",
+            "name": "http://localhost:3000/features",
+            "url": "http://localhost:3000/features",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-07-04T15:11:48.440Z",
+            "modified": "2023-07-04T15:11:48.441Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\":\"features1\",\n  \"description\":\"yo this feat\",\n  \"status\":\"Pending\",\n  \"startDate\":\"30/03/2022\",\n  \"dueDate\":\"22/04/2022\",\n  \"assignedUserId\": [1,2]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5fef4263-262d-4958-9c4d-c5aa6e0820bd",
+            "colId": "a5564af0-956d-4331-826a-56096637da37",
+            "containerId": "",
+            "name": "http://localhost:3000/users",
+            "url": "http://localhost:3000/users",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2023-07-04T15:12:09.778Z",
+            "modified": "2023-07-04T15:12:09.778Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"test\",\n  \"email\":\"test@gmail.com\",\n  \"password\":\"test@123\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
