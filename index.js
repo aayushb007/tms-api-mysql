@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./config/db')
 const app = express();
-// const { verifyToken } = require('./auth/auth');
+const { verifyToken , authenticateToken } = require('./auth/auth');
 // const usersRoutes = require('./routes/users');
 // const tasksRoutes = require('./routes/tasks');
 app.use(cors());
@@ -37,7 +37,7 @@ app.post('/tasks', taskController.createTask);
 
 // Get all 
 
-app.get('/tasks', taskController.getAllTasks);
+app.get('/tasks',authenticateToken, taskController.getAllTasks); //securing get task API
 app.get('/tasks/bug/', taskController.getBugs);
 app.get('/tasks/search/', taskController.searchTasks);
 app.get('/tasks/:id', taskController.getAllTasksById);
@@ -80,31 +80,16 @@ app.delete('/sub-tasks/:id', subTaskController.deleteSubTask);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middleware for validating JWT token
-// app.use((req, res, next) => {
-//     const token = req.headers.authorization;
-//     if (token) {
-//       const decodedToken = verifyToken(token, 'your-secret-key');
-//       if (decodedToken) {
-//         req.userId = decodedToken.id;
-//       }
-//     }
-//     next();
-//   });
-// Middleware for validating JWT token
-// app.use((req, res, next) => {
-//     const token = req.headers.authorization;
-//     if (token) {
-//       const decodedToken = verifyToken(token, 'your-secret-key');
-//       if (decodedToken) {
-//         req.userId = decodedToken.id;
-//       }
-//     }
-//     next();
-//   });
-
-// Use routes
-// app.use('/user', usersRoutes);
-// app.use('/task', tasksRoutes);
+app.use((req, res, next) => {
+    const token = req.headers.authorization;
+    if (token) {
+      const decodedToken = verifyToken(token, 'my-key');
+      if (decodedToken) {
+        req.userId = decodedToken.id;
+      }
+    }
+    next();
+  });
 //simple route
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to Tms API' });

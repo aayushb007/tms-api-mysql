@@ -20,7 +20,8 @@ async function createTask(req, res) {
           status,
           startDate,
           dueDate,
-          FeatureId: feature_id
+          FeatureId: feature_id,
+          feature_id
         });
         newTask.setUsers(feature.users).then(()=>{
           console.log('Task Assigned Successfully');
@@ -149,6 +150,7 @@ async function createTask(req, res) {
       res.status(500).json({ message: 'Failed to retrieve tasks' });
     }
   }
+  
 
   async function searchTasks(req, res) {
     try {
@@ -161,11 +163,11 @@ async function createTask(req, res) {
             { desc: { [Op.like]: `%${query}%` } },
            
           ],
+          
         },
-        include: [{ model: User,
-          where : {name : { [Op.like]: `%${query}%` } }, }]
+        
       });
-  
+      console.log(tasks);
       res.json(tasks);
     } catch (error) {
       console.error(error);
@@ -177,7 +179,7 @@ async function createTask(req, res) {
   async function updateTask(req, res) {
     try {
       const taskId = req.params.id;
-      const { taskType, title, desc, status, startDate, dueDate } = req.body;
+      const { taskType, title, desc, status, startDate, dueDate, feature_id  } = req.body;
   
       const task = await Task.findByPk(taskId);
       if (!task) {
@@ -190,7 +192,9 @@ async function createTask(req, res) {
         desc,
         status,
         startDate,
-        dueDate
+        dueDate,
+        FeatureId: feature_id,
+        feature_id
       });
   
       res.json(task);
